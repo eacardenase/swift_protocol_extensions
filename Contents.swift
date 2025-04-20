@@ -12,6 +12,18 @@ extension Exercise {
     }
 }
 
+extension Exercise {
+    func adding(calories: Double) -> Self {
+        var dupe = self
+        
+        dupe.caloriesBurned += calories
+        
+        print("Creating a new \(Self.self) with \(dupe.caloriesBurned)cal burned.")
+        
+        return dupe
+    }
+}
+
 struct EllipticalWorkout: Exercise {
     var caloriesBurned: Double
     var minutes: Double
@@ -35,3 +47,9 @@ let runningWorkout = RunningWorkout(caloriesBurned: 350, minutes: 25, meters: 50
 
 print(ellipticalWorkout.caloriesBurnedPerMinute)
 print(runningWorkout.caloriesBurnedPerMinute)
+
+let ellipticalCopy = ellipticalWorkout.adding(calories: 50)
+let runningCopy = runningWorkout.adding(calories: 100)
+
+print(EllipticalWorkout.self) // EllipticalWorkout
+print(type(of: EllipticalWorkout.self)) // EllipticalWorkout.Type
