@@ -3,7 +3,6 @@ import Cocoa
 protocol Exercise {
     var caloriesBurned: Double { get set }
     var minutes: Double { get set }
-    var caloriesBurnedPerMinute: Double { get }
 }
 
 extension Exercise {
@@ -53,3 +52,20 @@ let runningCopy = runningWorkout.adding(calories: 100)
 
 print(EllipticalWorkout.self) // EllipticalWorkout
 print(type(of: EllipticalWorkout.self)) // EllipticalWorkout.Type
+
+//extension Sequence where Element: Exercise {
+extension Sequence where Element == Exercise {
+    func totalCaloriesBurned() -> Double {
+        var total: Double = 0
+        
+        for exercise in self {
+            total += exercise.caloriesBurned
+        }
+        
+        return total
+    }
+}
+
+let mondayWorkout: [Exercise] = [ellipticalWorkout, runningWorkout]
+
+print(mondayWorkout.totalCaloriesBurned())
