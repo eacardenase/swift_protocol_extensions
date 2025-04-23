@@ -25,7 +25,7 @@ extension Exercise {
 
 extension Exercise {
     var description: String {
-        "Exercise \(Self.self), burned \(caloriesBurned) calories in \(minutes) minutes."
+        "Exercise(\(Self.self), burned \(caloriesBurned) calories in \(minutes) minutes)"
     }
 }
 
@@ -38,6 +38,10 @@ struct RunningWorkout: Exercise {
     var caloriesBurned: Double
     var minutes: Double
     var meters: Double
+    
+    var description: String {
+        "\(Self.self)(\(caloriesBurned) calories and \(meters)m in \(minutes) minutes)"
+    }
 }
 
 let ellipticalWorkout = EllipticalWorkout(caloriesBurned: 335, minutes: 30)
