@@ -29,12 +29,20 @@ extension Exercise {
     }
 }
 
+extension Exercise {
+    var title: String {
+        "\(Self.self) - \(minutes) minutes"
+    }
+}
+
 struct EllipticalWorkout: Exercise {
     var caloriesBurned: Double
     var minutes: Double
 }
 
 struct RunningWorkout: Exercise {
+    var title = "Gotta go fast!"
+    
     var caloriesBurned: Double
     var minutes: Double
     var meters: Double
@@ -82,3 +90,9 @@ print(mondayWorkout.totalCaloriesBurned())
 
 print(ellipticalWorkout)
 print(runningWorkout)
+
+let tenKRun = RunningWorkout(caloriesBurned: 750, minutes: 60, meters: 10000) // Gotta go fast!
+let workout: Exercise = tenKRun // RunningWorkout - 60.0 minutes
+
+print(tenKRun.title)
+print(workout.title)
