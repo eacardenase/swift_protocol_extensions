@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol Exercise {
+protocol Exercise: CustomStringConvertible {
     var caloriesBurned: Double { get set }
     var minutes: Double { get set }
 }
@@ -20,6 +20,12 @@ extension Exercise {
         print("Creating a new \(Self.self) with \(dupe.caloriesBurned)cal burned.")
         
         return dupe
+    }
+}
+
+extension Exercise {
+    var description: String {
+        "Exercise \(Self.self), burned \(caloriesBurned) calories in \(minutes) minutes."
     }
 }
 
@@ -69,3 +75,6 @@ extension Sequence where Element == Exercise {
 let mondayWorkout: [Exercise] = [ellipticalWorkout, runningWorkout]
 
 print(mondayWorkout.totalCaloriesBurned())
+
+print(ellipticalWorkout)
+print(runningWorkout)
