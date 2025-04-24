@@ -3,6 +3,7 @@ import Cocoa
 protocol Exercise: CustomStringConvertible {
     var caloriesBurned: Double { get set }
     var minutes: Double { get set }
+    var title: String { get }
 }
 
 extension Exercise {
