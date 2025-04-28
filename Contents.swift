@@ -97,3 +97,18 @@ let workout: Exercise = tenKRun // RunningWorkout - 60.0 minutes
 
 print(tenKRun.title)
 print(workout.title)
+
+extension Collection {
+    func count<E>(where test: (E) -> Bool) -> Int where Self.Element == E {
+        var counter = 0
+        
+        for i in self where test(i) {
+            counter += 1
+        }
+        
+        return counter
+    }
+}
+
+let workouts: [Exercise] = [ellipticalWorkout, runningWorkout, tenKRun]
+let hardWorkoutCount = workouts.count(where: { $0.caloriesBurned >= 500 }) // 1
