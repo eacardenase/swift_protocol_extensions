@@ -112,3 +112,16 @@ extension Collection {
 
 let workouts: [Exercise] = [ellipticalWorkout, runningWorkout, tenKRun]
 let hardWorkoutCount = workouts.count(where: { $0.caloriesBurned >= 500 }) // 1
+
+extension Collection where Element: AdditiveArithmetic {
+//    func sum() -> Element {
+//        return reduce(.zero, { $0 + $1 })
+//    }
+    
+    var sum: Element {
+        return reduce(.zero, +)
+    }
+}
+
+[4, 8, 15, 16, 23, 42].sum
+[80.5, 9.6].sum
